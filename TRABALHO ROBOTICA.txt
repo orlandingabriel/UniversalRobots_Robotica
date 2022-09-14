@@ -1,0 +1,60 @@
+Set inbox = false
+set esteira A = 0
+set esteira B = 0
+
+movj
+	waypoint 1
+Movel
+	Waypoint 2
+	setGripper On set payload 3.6kg
+	wait (1 second)
+	Waypoint 3
+movej
+	waypoint 4
+	wait (digital input sensor 3 high)
+movel
+	waypoint 5
+	set gripper off set payload 0.6
+	wait 1 second
+	waypoint 6
+	inbox = true
+	increment installation variable by one esteira A
+Movj
+	waypoint 7
+	wait (digital input sensor 2 high)
+Movel
+	Waypoint 8
+	setGripper On set payload 3.6kg
+	wait (1 second)
+	Waypoint 9
+movej
+	waypoint 4
+	wait (digital input sensor 3 high)
+movel
+	waypoint 5
+	set gripper off set payload 0.6
+	wait 1s
+	waypoint 6
+	inbox = true
+	increment installation variable by one esteira B	
+
+thread 1
+	set conveyor A on
+	wait (digital input sensor 1 high)
+	set conveyor A off
+	wait (digital input sensor 1 low)
+	sync()
+	set conveyor B on
+	wait (digital input sensor 2 high)
+	set conveyor B off
+	wait (digital input sensor 2 low)
+	sync()
+thread 2
+	set conveyor C on
+	wait (digital input sensor 3 high)
+	set conveyor C off
+	wait for inbox variable true
+	inbox = false
+	set conveyor C high
+	wait (digital input sensor 3 low)
+	sync()

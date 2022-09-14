@@ -1,0 +1,60 @@
+ Program
+   Robot Program
+     sensor≔ True 
+     MoveJ
+       Waypoint_1
+       Wait sensor≟ True 
+     MoveL
+       Waypoint_2
+       Gripper≔ True 
+       Wait: 1.0
+       Waypoint_3
+       sensor≔ False 
+     Pallet_1
+       Patterns
+         Irreg_Pattern_1
+           Item_1
+           Item_2
+           Item_3
+           Item_4
+         Irreg_Pattern_2
+           Item_5
+           Item_6
+           Item_7
+           Item_8
+         Irreg_Pattern_3
+           Item_9
+           Item_10
+           Item_11
+           Item_12
+         Separator
+       Layers
+       At Each Item
+         Generated Movements
+           MoveJ
+             Approach_1
+           MoveL
+             ToolActionPoi_1
+           Tool action
+             Gripper≔ False 
+             Wait: 1.0
+           MoveL
+             Exit_2
+       Separator Action
+         Pick Up Separator
+           MoveJ
+             Waypoint_4
+           MoveL
+             Waypoint_5
+             Gripper≔ True 
+             Wait: 1.0
+             Waypoint_6
+         MoveJ
+           Approach
+         MoveL
+           ToolActionPoint
+         Tool action
+           Gripper≔ False 
+           Wait: 1.0
+         MoveL
+           Exit_1

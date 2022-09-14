@@ -1,0 +1,20 @@
+ Program
+   Init Variables
+   Robot Program
+     If passou≟3
+       Loop cont<6
+         MoveJ
+           Waypoint_1
+           Waypoint_2
+           Waypoint_3
+           cont≔cont+1
+       passou≔0
+     cont≔0
+     MoveJ
+       Waypoint_6
+       Waypoint_5
+       Waypoint_4
+       Waypoint_1
+       Waypoint_2
+       Waypoint_3
+       passou≔passou+1
